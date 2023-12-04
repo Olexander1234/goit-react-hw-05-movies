@@ -1,16 +1,20 @@
+
+import {NavLink} from "react-router-dom"
+import {Outlet} from "react-router-dom"
+import { Movies } from "./Movies";
 export const App = () => {
+  
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+       <nav>
+
+<ul>
+    <li><NavLink to = '/'>Home</NavLink></li>
+    <li><NavLink to= '/movies'>Movies</NavLink></li>
+</ul>
+
+</nav>
+<Outlet> <Movies></Movies></Outlet>
     </div>
   );
 };
