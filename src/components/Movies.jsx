@@ -1,9 +1,44 @@
-export function Movies() {    
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
+import { fetchFilmsByName } from "./service/fetchFilms";
+
+export function Movies() {
+    const [films, setFilms] = useState([]);
+    const goBack = useNavigate();
+    const [searchFilms, setSearchFilm] = useSearchParams();
+    const searchFilm = searchFilms.get('title') ?? '';
+
+    const updateQueryString = (title) => {
+        setSearchFilm(title !== "" ? { title } : {});
+    };
+
+    useEffect(() => {
+        const fetchFilms = async () => {
+            const searchQuery = searchFilm;
+
+            // Добавляем задержку в 2 секунды
+            setTimeout(async () => {
+                const data = await fetchFilmsByName(searchQuery);
+                setFilms(data);
+            }, 2000);
+        };
+
+        fetchFilms();
+    }, [searchFilm]);
+
     return (
         <div className="thumb">
-           <h1>Movies</h1>
-          
-            <p>Start with the tutorial. It will quickly introduce you to the primary features of React Router: from configuring routes, to loading and mutating data, to pending and optimistic UI.</p>
+            <h1>Movies</h1>
+            <button type='button' onClick={() => goBack(-1)}>Go back</button>
+            <input type="text" value={searchFilm} onChange={(e) => updateQueryString(e.target.value)} />
+            <ul>
+                {films.map(({ id, original_title }) => (
+                    <li key={id}>
+                        <NavLink to={`/movies/${id}`}>{original_title}</NavLink>
+                    </li>
+                ))}
+            </ul>
         </div>
-    )
+    );
 }
