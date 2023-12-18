@@ -33,3 +33,29 @@ export const fetchFilmsByName = async (searchQuery) => {
         console.error(error);
     }
 };
+
+export const fetchFilmsCredit = async ({ params }) => {
+    try {
+        const data = await axios.get(
+            `https://api.themoviedb.org/3/movie/${params.movieId}/credits?api_key=${API_KEY}`
+        );
+       console.log(data);
+       const credits = await data.data.cast.slice(0, 10);
+        return await credits;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const fetchFilmsReviews = async ({ params }) => {
+    try {
+        const data = await axios.get(
+            `https://api.themoviedb.org/3/movie/${params.movieId}/reviews?api_key=${API_KEY}`
+        );
+       console.log(data);
+       const credits = await data.data.results.slice(0, 10);
+        return await credits;
+    } catch (error) {
+        console.error(error);
+    }
+};

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
 import { fetchFilmsByName } from "./service/fetchFilms";
+import debounce from "debounce";
 
 export function Movies() {
     const [films, setFilms] = useState([]);
@@ -17,8 +18,8 @@ export function Movies() {
         const fetchFilms = async () => {
             const searchQuery = searchFilm;
 
-            // Добавляем задержку в 2 секунды
-            setTimeout(async () => {
+           
+            debounce(async () => {
                 const data = await fetchFilmsByName(searchQuery);
                 setFilms(data);
             }, 2000);
