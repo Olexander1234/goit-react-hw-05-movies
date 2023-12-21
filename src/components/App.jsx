@@ -2,9 +2,11 @@
 import {NavLink} from "react-router-dom"
 import {Outlet} from "react-router-dom"
 import { Movies } from "./Movies";
+import { Suspense } from "react";
 export const App = () => {
   
   return (
+    <Suspense fallback={<div>Loader...</div>}>
     <div>
        <nav>
 
@@ -16,5 +18,6 @@ export const App = () => {
 </nav>
 <Outlet> <Movies></Movies></Outlet>
     </div>
+    </Suspense>
   );
 };

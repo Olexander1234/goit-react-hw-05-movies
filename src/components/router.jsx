@@ -1,11 +1,22 @@
 import { createBrowserRouter} from "react-router-dom"
-import { App } from "./App"
-import {Home} from "./Home"
-import {Movies} from './Movies'
+// import { App } from "./App"
+
+// import {Movies} from './Movies'
 import { fetchFilms, fetchFilmsById, fetchFilmsByName, fetchFilmsCredit, fetchFilmsReviews } from "./service/fetchFilms"
-import { Film } from "./Film"
-import { Cast } from "./Cast"
-import { Revirews } from "./Revirews"
+// import { Film } from "./Film"
+// import { Cast } from "./Cast"
+// import { Revirews } from "./Revirews"
+import { lazy } from "react"
+const Home = lazy(()=>import('./Home'))
+const App = lazy(()=>import('./App'))
+const Movies = lazy(()=>import('./Movies'))
+const Film = lazy(()=>import('./Film'))
+const Cast  = lazy(()=>import('./Home'))
+const Revirews  = lazy(()=>import('./Revirews'))
+
+
+
+
 export const router = createBrowserRouter([
     {
         path: '/',
