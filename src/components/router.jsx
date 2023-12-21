@@ -7,9 +7,10 @@ import { fetchFilms, fetchFilmsById, fetchFilmsByName, fetchFilmsCredit, fetchFi
 // import { Cast } from "./Cast"
 // import { Revirews } from "./Revirews"
 import { lazy } from "react"
+import { Movies } from "./Movies"
 const Home = lazy(()=>import('./Home'))
 const App = lazy(()=>import('./App'))
-const Movies = lazy(()=>import('./Movies'))
+
 const Film = lazy(()=>import('./Film'))
 const Cast  = lazy(()=>import('./Home'))
 const Revirews  = lazy(()=>import('./Revirews'))

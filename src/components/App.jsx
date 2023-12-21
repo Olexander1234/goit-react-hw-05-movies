@@ -1,9 +1,9 @@
 
 import {NavLink} from "react-router-dom"
 import {Outlet} from "react-router-dom"
-import { Movies } from "./Movies";
+import  {Movies} from "./Movies";
 import { Suspense } from "react";
-export const App = () => {
+export default function App  () {
   
   return (
     <Suspense fallback={<div>Loader...</div>}>

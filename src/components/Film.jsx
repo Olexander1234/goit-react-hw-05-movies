@@ -1,5 +1,5 @@
 import { useParams, useLoaderData, Outlet, Link, useNavigation, useNavigate} from "react-router-dom"
-export const Film = ()=>{
+export default function Film  () {
     
     const goBack = useNavigate();
     const {filmId} = useParams();

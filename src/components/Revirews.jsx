@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 
-    export const Revirews = ()=>{
+export default function Revirews() {
         const films = useLoaderData();
         return(
             <div className="thumb">

@@ -1,6 +1,5 @@
 import { NavLink, useLoaderData } from "react-router-dom";
-
-export const Cast = ()=>{
+export default function Cast  () {
     const credit = useLoaderData();
     return(
         <ul>

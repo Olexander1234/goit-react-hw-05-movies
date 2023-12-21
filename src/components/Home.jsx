@@ -1,6 +1,6 @@
 import { NavLink, useLoaderData } from "react-router-dom";
 
-export function Home() {   
+export default function Home  () {
     const films = useLoaderData();
 
     return (
